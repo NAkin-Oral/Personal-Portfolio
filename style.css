@@ -1,4 +1,4 @@
-/* Common Styles */
+/* Reset and Common Styles */
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +12,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 .center {
@@ -29,11 +30,9 @@ html {
   border-bottom: 0.3rem solid #333;
   text-shadow: 0.2rem 0.2rem 0.5rem #555;
 }
+/* End of Reset and Common Styles */
 
-/* End of Common Styles */
-
-/* Section-1 */
-
+/* Section 1 */
 .section-1 {
   width: 100%;
   height: 100vh;
@@ -41,7 +40,7 @@ html {
       rgba(255, 255, 255, 0.2),
       rgba(255, 255, 255, 0.3)
     ),
-    url(./images/bg.jpg) center no-repeat;
+    url(images/bg.jpg) center no-repeat;
   background-size: cover;
   flex-direction: column;
 }
@@ -49,7 +48,7 @@ html {
 .section-1-heading {
   font-size: 6rem;
   font-weight: 700;
-  color: white;
+  color: #fff;
   background-color: #e41c6f;
   padding: 0 3rem;
   margin-bottom: 5rem;
@@ -91,15 +90,21 @@ html {
   text-transform: uppercase;
   letter-spacing: 0.3rem;
 }
+/* End of Section 1 */
 
-/* End of Section-1 */
 /* Navbar */
-
 .navbar {
   width: 100%;
   height: 4rem;
   background-color: #e41c6f;
   box-shadow: 0.2rem 0.2rem 0.5rem #555;
+  position: absolute;
+  z-index: 300;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
 }
 
 .navbar-link {
@@ -111,6 +116,10 @@ html {
   text-transform: uppercase;
   position: relative;
   transition: color 0.2s;
+}
+
+.change.navbar-link {
+  color: #fff;
 }
 
 .navbar-link:hover {
@@ -128,14 +137,16 @@ html {
   transition: width 0.2s;
 }
 
-.navbar-link:hover::before {
+.change.navbar-link::before {
   width: 130%;
 }
 
+.navbar-link:hover::before {
+  width: 130%;
+}
 /* End of Navbar */
 
-/* Section-2 */
-
+/* Section 2 */
 .section-2 {
   width: 100%;
   height: 100%;
@@ -150,7 +161,7 @@ html {
   margin-bottom: 10rem;
 }
 
-.progress-bars {
+.progress-bar {
   width: 60rem;
   height: 3rem;
   background-color: #ccc;
@@ -174,10 +185,11 @@ html {
 }
 
 .progress-percent {
-  width: 90%;
+  width: 0;
   height: 100%;
   background-color: #e41c6f;
   border-radius: 0.3rem;
+  transition: width 0.5s 0.5s ease-in-out;
 }
 
 .services {
@@ -213,11 +225,9 @@ html {
   transform: skew(-10deg);
   box-shadow: 0.2rem 0.2rem 0.5rem #555;
 }
+/* End of Section 2 */
 
-/* End of Section-2 */
-
-/* Section-3 */
-
+/* Section 3 */
 .section-3 {
   width: 100%;
   height: 100%;
@@ -302,11 +312,9 @@ html {
   bottom: 5rem;
   transition: bottom 0.3s 0.3s;
 }
+/* End of Section 3 */
 
-/* End of Section-3 */
-
-/* Section-4 */
-
+/* Section 4 */
 .section-4 {
   width: 100%;
   height: 70vh;
@@ -328,6 +336,7 @@ html {
   width: 50rem;
   flex-direction: column;
 }
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -343,7 +352,6 @@ html {
   height: 10rem;
   max-height: 15rem;
   max-width: 100%;
-  resize: none;
 }
 
 .contact-form .contact-form-btn {
@@ -353,11 +361,9 @@ html {
   letter-spacing: 1rem;
   cursor: pointer;
 }
+/* End of Section 4 */
 
-/* End of Section-4 */
-
-/* Section-5 */
-
+/* Section 5 */
 .section-5 {
   width: 100%;
   height: 30vh;
@@ -389,5 +395,94 @@ html {
   font-weight: 300;
   text-align: center;
 }
+/* End of Section 5 */
 
-/* End of Section-5 */
+/* Responsive */
+@media (max-width: 1200px) {
+  .services {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .service {
+    margin: 3rem 2rem;
+  }
+
+  .section-4 {
+    height: 80vh;
+  }
+}
+
+@media (max-width: 800px) {
+  .section-1-heading {
+    font-size: 4rem;
+  }
+
+  .progress-bar {
+    width: 50rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-1-heading {
+    font-size: 3rem;
+  }
+
+  .navbar-link {
+    margin: 0 2rem;
+    font-size: 1.5rem;
+  }
+
+  .section-2 {
+    padding: 10rem;
+  }
+
+  .section-2-heading {
+    margin-bottom: 10rem;
+  }
+
+  .progress-bar {
+    width: 45rem;
+  }
+
+  .project-img {
+    width: 100%;
+  }
+
+  .contact-form {
+    width: 40rem;
+  }
+
+  .copyright {
+    width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 45%;
+  }
+
+  .section-1-heading {
+    font-size: 2.5rem;
+  }
+
+  .navbar-link {
+    margin: 0 1.5rem;
+  }
+
+  .section-2-heading {
+    text-align: center;
+  }
+
+  .progress-bar {
+    width: 40rem;
+  }
+}
+/* End of Responsive */
